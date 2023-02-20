@@ -98,7 +98,7 @@ void update(const char &guessChar, string &guessword,const string &secret, int &
     }
     if (count == 0) ++badGuess;
 }
-bool checker(const string &guessword,const string &secret,const int &badguess){
+bool trueORfalse(const string &guessword,const string &secret,const int &badguess){
     if (guessword != secret || badguess < MAX_ENTRY) return false;
     return true;
 }
@@ -127,7 +127,7 @@ int main(){
     cout << secret << "\n";
     cout << figure[0] << "\n";
     cout << "word: " << guessword << "\n" << "Guess: " << "\n";
-    while (badGuess < MAX_ENTRY && checker(guessword, secret, badGuess) != true){
+    while (badGuess < MAX_ENTRY && !trueORfalse(guessword, secret, badGuess)){
         cin >> guessChar;
         update(guessChar, guessword, secret, badGuess);
         displayShow(guessword, secret, badGuess);

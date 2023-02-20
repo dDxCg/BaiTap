@@ -77,7 +77,7 @@ void chooseword(string &secretWord){
     secretWord = WORD_LIST[randindex];
 }
 
-string word_guess(string secret){
+string word_guess(const string &secret){
     string str = "";
     for (int i = 0; i < secret.length(); ++i){
         str += "-";
@@ -85,7 +85,7 @@ string word_guess(string secret){
     return str;
 }
 
-void update(char guessChar, string &guessword, string secret, int &badGuess){
+void update(const char &guessChar, string &guessword,const string &secret, int &badGuess){
     int count = 0;
     int wordsize = secret.size();
     for (int i = 0; i < secret.size(); ++i){
@@ -98,12 +98,12 @@ void update(char guessChar, string &guessword, string secret, int &badGuess){
     }
     if (count == 0) ++badGuess;
 }
-bool checker(string guessword, string secret, int badguess){
+bool checker(const string &guessword,const string &secret,const int &badguess){
     if (guessword != secret || badguess < MAX_ENTRY) return false;
     return true;
 }
 
-void displayShow(string guessword, string secret, int badguess){
+void displayShow(const string &guessword,const string &secret,const int &badguess){
 
     if (badguess >= MAX_ENTRY){
         cout << figure[badguess] << "\n";
